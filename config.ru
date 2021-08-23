@@ -1,2 +1,2 @@
-require './app'
+require './config/environment'
 run Mkbnb
