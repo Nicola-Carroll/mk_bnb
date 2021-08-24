@@ -11,6 +11,7 @@ class Mkbnb < Sinatra::Base
 
   get '/' do
     @users = User.all
+    @users.each { |user| p user.first_name } 
     erb :index
   end
 

@@ -12,12 +12,12 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 if ENV['SINATRA_ENV'] == 'test'
   ActiveRecord::Base.establish_connection(
     adapter: "sqlite3",
-    database: "./db/mk_bnb_test"
+    database: "db/mk_bnb_db_test"
   )
 elsif ENV['SINATRA_ENV'] == 'development'
   ActiveRecord::Base.establish_connection(
     adapter: "sqlite3",
-    database: "./db/mk_bnb"
+    database: "db/mk_bnb_db"
   )
 end
 
