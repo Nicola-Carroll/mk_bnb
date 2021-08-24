@@ -1,4 +1,6 @@
 require './config/environment'
+require './models/users'
+require 'sinatra/base'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
@@ -8,6 +10,7 @@ class Mkbnb < Sinatra::Base
   end
 
   get '/' do
+    @users = User.all
     erb :index
   end
 
