@@ -1,12 +1,7 @@
 require './config/environment'
-<<<<<<< HEAD
-require './models/users'
-require './models/rooms'
-=======
 require './models/user'
 require './models/rooms'
 
->>>>>>> c71467c
 require 'sinatra/base'
 require 'sinatra'
 require 'sinatra/reloader' if development?
@@ -56,7 +51,7 @@ class Mkbnb < Sinatra::Base
       title: params[:title],
       description: params[:description],
       price_per_night:params[:price_per_night].to_f,
-      user_id: User.all.last.id
+      user_id: session[:current_user].id
     )
     @rooms = Room.all
     erb :listings
