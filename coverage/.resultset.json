@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/william/Desktop/Projects/mk_bnb/spec/features/home_page_spec.rb": {
+      "/Users/nicola/projects/group_projects/mk_bnb/spec/features/home_page_spec.rb": {
         "lines": [
           1,
           1,
@@ -11,7 +11,7 @@
           null
         ]
       },
-      "/Users/william/Desktop/Projects/mk_bnb/spec/features/sign_in_spec.rb": {
+      "/Users/nicola/projects/group_projects/mk_bnb/spec/features/sign_in_spec.rb": {
         "lines": [
           1,
           1,
@@ -47,11 +47,10 @@
           null
         ]
       },
-      "/Users/william/Desktop/Projects/mk_bnb/spec/features/test_db_connection_spec.rb": {
+      "/Users/nicola/projects/group_projects/mk_bnb/spec/features/test_db_connection_spec.rb": {
         "lines": [
           1,
           null,
-          1,
           1,
           1,
           1,
@@ -67,7 +66,7 @@
           null
         ]
       },
-      "/Users/william/Desktop/Projects/mk_bnb/spec/units/user_spec.rb": {
+      "/Users/nicola/projects/group_projects/mk_bnb/spec/units/user_spec.rb": {
         "lines": [
           1,
           null,
@@ -93,6 +92,6 @@
         ]
       }
     },
-    "timestamp": 1629826713
+    "timestamp": 1629837132
   }
 }

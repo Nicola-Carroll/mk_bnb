@@ -2,7 +2,6 @@ require './models/user'
 
 feature 'landing page' do
   scenario 'lists users' do
-    User.delete_all
     User.create!(
       first_name: 'Willy', 
       last_name: 'Balm', 

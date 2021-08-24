@@ -1,11 +1,14 @@
 require './config/environment'
 require './models/user'
+require './models/rooms'
+
 require 'sinatra/base'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
 class Mkbnb < Sinatra::Base
   enable :sessions
+  
   configure :development do
     register Sinatra::Reloader
   end
@@ -38,6 +41,22 @@ class Mkbnb < Sinatra::Base
   get '/invalid_login' do
     erb :invalid_login
   end
+
+  get '/create_listing' do
+    erb :new_listing
+  end
+
+  post '/listings' do
+    Room.create!(
+      title: params[:title],
+      description: params[:description],
+      price_per_night:params[:price_per_night].to_f,
+      user_id: User.all.last.id
+    )
+    @rooms = Room.all
+    erb :listings
+  end
+
 
   run! if app_file == $0
 
