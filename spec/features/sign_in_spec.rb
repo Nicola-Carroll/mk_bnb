@@ -6,7 +6,6 @@ feature 'log in page' do
   end
 
   scenario 'checks that an existing user is able to login' do
-    User.delete_all
     User.create!(
       first_name: 'Willy', 
       last_name: 'Balm', 
