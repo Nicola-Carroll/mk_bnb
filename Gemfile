@@ -5,7 +5,6 @@ ruby '2.7.3'
 gem 'sinatra', '2.1.0'
 gem 'sinatra-contrib', '2.1.0', require: false
 gem 'capybara'
-# gem 'pg'
 gem 'rspec'
 gem 'rubocop'
 gem 'activerecord', '5.2'
