@@ -19,3 +19,15 @@ users = [
 users.each do |user|
   User.create(user)
 end
+
+# rooms = [
+#   {
+#     title: 'Sunny beach hut in Cornwall',
+#     description: "5 start luxury hut would recommend",
+#     price_per_night: "10000",
+#     user_id: 1
+#   },
+#   {
+
+#   }
+# ]
