@@ -1,5 +1,20 @@
-<h1>
-  <% @users.each do |user| %>
-    <li><%= user.user_name %></li>
-  <% end %>
-</h1>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>MakersBnB</title>
+      <link rel=“stylesheet” type=“text/css” href=“style.css”>
+    </head>
+    <body>
+      <section id=‘box’>
+        <h1>Welcome to Makersbnb!</h1>
+        <h1>
+          <% User.all.each do |user| %>
+          <li><%= user.user_name %></li>
+          <% end %>
+        </h1>
+        <form action='/login' method='get'>
+        <input type="submit" id="log_in" value="Log In">
+        </form>
+    </section>
+  </body>
+</html>

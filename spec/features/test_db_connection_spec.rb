@@ -1,4 +1,4 @@
-require './models/users'
+require './models/user'
 
 feature 'landing page' do
   scenario 'lists users' do
