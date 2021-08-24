@@ -6,8 +6,9 @@
     </head>
     <body>
       <section id=‘box’>
+        <h1>Welcome to Makersbnb!</h1>
         <h1>
-          <% @users.each do |user| %>
+          <% User.all.each do |user| %>
           <li><%= user.user_name %></li>
           <% end %>
         </h1>
