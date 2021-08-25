@@ -2,16 +2,16 @@
 <html>
   <head>
     <title>MakersBnB</title>
-    <link rel=“stylesheet” type=“text/css” href=“style.css”>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
     <header><p style="text-align:right;"><a href="/login">Log In</a><p></header>
   <body>
+    <img src='images/makers_logo.jpg' alt='Fluffy Kitten' id='logo'>
     <section id='box'>
-      <h1>Thanks for signing up <%="#{@new_user.first_name}" %>!
-       Please sign in with your new username and password here:</h1>
+      <h2>Thanks for signing up <%= "#{@new_user.first_name}" %>! Please sign in with your new username and password here:</h2>
       <form action="/login" method="post"><br>
-        Username:    <input type="text" name="user_name"><br>
-        Password: <input type="password" name="password"><br>
+        <input type="text" placeholder='Username' name="user_name"><br>
+        <input type="password" placeholder='Password' name="password"><br>
         <input type="submit" value="Log In"><br>
       </form>
     </section>

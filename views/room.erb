@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>MakersBnB</title>
-    <link rel=“stylesheet” type=“text/css” href=“style.css”>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
     <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
     <a href="/explore_rooms">Explore Rooms</a>&nbsp;
@@ -10,8 +10,9 @@
     <a href="/logout">Log Out</a>
     <p></header>
   <body>
+    <img src='images/makers_logo.jpg' alt='Fluffy Kitten' id='logo'>
     <section id='box'>
-      <h1>You are viewing <%="#{@room}"%></h1>
+      <br><h2>You are viewing <%="#{@room}"%></h2>
       <div>
         <form action="/make_request" method="post">
           <input type="submit" name="make_request" value="Make Request!">
