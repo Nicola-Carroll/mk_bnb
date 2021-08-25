@@ -21,6 +21,22 @@ class Mkbnb < Sinatra::Base
     erb :index
   end
 
+  post '/register' do
+    session[:new_user] = User.create!(
+      first_name: params[:first_name], 
+      last_name: params[:last_name], 
+      email: params[:email], 
+      user_name: params[:user_name], 
+      password: params[:password]
+    )
+    redirect '/register'
+  end
+
+  get '/register' do
+    @new_user = session[:new_user]
+    erb :register
+  end
+
   get '/login' do
     erb :login
   end
@@ -50,7 +66,7 @@ class Mkbnb < Sinatra::Base
     Room.create!(
       title: params[:title],
       description: params[:description],
-      price_per_night:params[:price_per_night].to_f,
+      price_per_night: params[:price_per_night].to_f,
       user_id: session[:current_user].id
     )
     @rooms = Room.all

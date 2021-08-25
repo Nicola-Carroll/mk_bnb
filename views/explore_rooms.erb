@@ -13,6 +13,15 @@
         <form action="/create_listing" method="GET">
           <input type="submit" name="add_listing" value="Add new listing!">
         </form>
+        <ul>
+        <% Room.all.reverse.each do |room| %>
+        <li><h1><%= room.title %></h1> <br> 
+        <%= room.description %> <br>
+        Available for £<%= room.price_per_night %> per night.<br>
+        posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
+        </li>
+        <% end %>
+        </ul> 
       </section>
   </body>
 </html>
