@@ -9,14 +9,17 @@
     <a href="/requests">Requests</a>&nbsp;
     <a href="/logout">Log Out</a>
     <p></header>
-  <body>
-    <img src='images/makers_logo.jpg' id='logo'>
-    <section id='box'>
-      <br><h2>Your listings</h2>
-      <h2><%= "#{@rooms.last.title} added!" %></h2>
-      <h3><% @rooms.each do |room| %>
-          <li><%= room.title %><%= room.availability %></li>
-          <% end %></h3>
+    <body>
+      <section id=‘box’>
+      <h1>Your listings</h1>
+      <div>
+      <%= "#{@rooms.last.title} added!" %>
+      </div>
+      <div>
+        <% @rooms.each do |room| %>
+          <li><%= room.title %> <%= room.availability %></li></li>
+        <% end %>
+      </div>
     </section>
   </body>
 </html>
