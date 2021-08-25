@@ -1,9 +1,19 @@
 <h1>Add a new listing!</h1>
 <div>
 <form action="/listings" method="POST">
-  Name of listing: <input type="text" name="title"><br>
-  Description: <input type="text" name="description"><br>
-  Price per day (£): <input type="text" name="price_per_night"><br>
+  Name of listing: <input type="text" name="title" required><br>
+  Description: <input type="text" name="description" required><br>
+  Price per day (£): <input type="text" name="price_per_night" required><br>
+  <section class='listing_range'>
+    Select the maximum date range when your room is available.<br>
+    If you wish to block out unavailable dates during this time you can do so later.<br>
+    Start of listing: <input type='date' name='availability_range_min' 
+                             value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                             min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+    End of listing: <input type='date' name='availability_range_max' 
+                             value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                             min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+  </section>
   <input type="submit" name="submit", value="Add listing!">
 </form>
 </div>

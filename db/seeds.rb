@@ -1,5 +1,5 @@
 # require 'require_all'
-require './models/users'
+require './models/user'
 
 users = [
   { first_name: 'sir david', 
