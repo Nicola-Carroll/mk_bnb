@@ -62,6 +62,11 @@ class Mkbnb < Sinatra::Base
     erb :new_listing
   end
 
+  get '/logout' do
+    @signed_in_user = nil
+    redirect '/'
+  end
+
   post '/listings' do
     Room.create!(
       title: params[:title],
@@ -73,6 +78,19 @@ class Mkbnb < Sinatra::Base
     erb :listings
   end
 
+  post '/book' do
+    session[:room] = params[:room]
+    redirect '/room'
+  end
+
+  get '/room' do
+    @room = session[:room]
+    erb :room
+  end
+
+  get '/requests' do
+    erb :requests
+  end
 
   run! if app_file == $0
 

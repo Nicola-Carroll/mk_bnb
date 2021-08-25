@@ -11,15 +11,13 @@
     <p></header>
     <body>
       <section id=‘box’>
-      <h1>Your listings</h1>
+      <center>
+      <h1>Requests you have made:</h1>
+      <h1>Requests you have received:</h1>
       <div>
-      <%= "#{@rooms.last.title} added!" %>
+  
       </div>
-      <div>
-        <% @rooms.each do |room| %>
-          <li><%= room.title %></li>
-        <% end %>
-      </div>
+      </center>
     </section>
   </body>
 </html>
