@@ -1,0 +1,9 @@
+<h1>Your listings</h1>
+<div>
+<%= "#{@rooms.last.title} added!" %>
+</div>
+<div>
+  <% @rooms.each do |room| %>
+    <li><%= room.title %></li>
+  <% end %>
+</div>

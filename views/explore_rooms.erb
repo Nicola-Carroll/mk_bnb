@@ -8,6 +8,11 @@
       <section id=‘box’>
         <h1>Welcome back <%="#{@signed_in_user.first_name}" %>!</h1>
         <h1>Logged in as <%="#{@signed_in_user.user_name}" %></h1>
-    </section>
+      </section>
+      <section>
+        <form action="/create_listing" method="GET">
+          <input type="submit" name="add_listing" value="Add new listing!">
+        </form>
+      </section>
   </body>
 </html>

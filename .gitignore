@@ -1,0 +1,9 @@
+/**/.DS_Store
+/coverage
+
+# Local cache of Rubocop remote config
+.rubocop-*
+db/mk_bnb_db
+db/mk_bnb_db_test
+db/mk_bnb_db_test.db
+db/mk_bnb.db
