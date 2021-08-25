@@ -48,6 +48,15 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/listings' do
+    # these two params will be date strings
+    # convert into a date
+    # create a date range between min and max
+    # create an array containing every single singular day in that range
+    params[:availability_range_min]
+    params[:availability_range_max]
+
+
+
     Room.create!(
       title: params[:title],
       description: params[:description],
