@@ -4,10 +4,14 @@
       <title>MakersBnB</title>
       <link rel=“stylesheet” type=“text/css” href=“style.css”>
     </head>
+    <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
+    <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/requests">Requests</a>&nbsp;
+    <a href="/logout">Log Out</a>
+    <p></header>
     <body>
       <section id=‘box’>
         <h1>Welcome back <%="#{@signed_in_user.first_name}" %>!</h1>
-        <h1>Logged in as <%="#{@signed_in_user.user_name}" %></h1>
       </section>
       <section>
         <form action="/create_listing" method="GET">
@@ -17,8 +21,12 @@
         <% Room.all.reverse.each do |room| %>
         <li><h1><%= room.title %></h1> <br> 
         <%= room.description %> <br>
-        Available for £<%= room.price_per_night %> per night.<br>
+        Available for £<%= room.price_per_night %>0 per night.<br>
         posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
+        <form action="/book" method="post"><br>
+        <input type="hidden" name="room" value="<%=room%>">
+        <input type="submit" value="Book It!"><br>
+        </form>
         </li>
         <% end %>
         </ul> 

@@ -4,14 +4,10 @@
       <title>MakersBnB</title>
       <link rel=“stylesheet” type=“text/css” href=“style.css”>
     </head>
+    <header><p style="text-align:right;"><a href="/login">Log In</a><p></header>
     <body>
       <section id=‘box’>
         <h1>Welcome to Makersbnb!</h1>
-        <h1>
-          <% User.all.each do |user| %>
-          <li><%= user.user_name %></li>
-          <% end %>
-        </h1>
         <h1>Register today! Please provide us with some simple details:</h1>
         <form action="/register" method="post"><br>
         First Name:    <input type="text" name="first_name"><br>

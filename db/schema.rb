@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_141606) do
+ActiveRecord::Schema.define(version: 2021_08_25_132549) do
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.string "booking_status", limit: 20, null: false
+    t.index ["room_id"], name: "index_requests_on_room_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string "title", limit: 100, null: false
