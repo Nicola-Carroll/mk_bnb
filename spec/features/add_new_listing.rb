@@ -25,5 +25,5 @@ feature 'adding a new listing' do
 #   scenario 'a signed up user can list multiple rooms' do
 #    "sdfdf"
 #   end
-test
+
 end
