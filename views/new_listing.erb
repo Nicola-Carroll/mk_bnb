@@ -14,13 +14,9 @@
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
       <br><h2>Add a new listing!</h2>
-      <form action="/listings" method="POST">
+      <form action="/edit_listing" method="POST">
         Name of listing: <input type="text" name="title"><br>
         Description: <input type="text" name="description"><br>
-<<<<<<< HEAD
-        Price per day (£): <input type="number" name="price_per_night"><br>
-        <input type="submit" name="submit" value="Add listing!">
-=======
         Price per day (£): <input type="text" name="price_per_night"><br>
       <section class='listing_range'>
         Select the maximum date range when your room is available.<br>
@@ -33,29 +29,7 @@
                              min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
       </section>
         <input type="submit" name="submit", value="Add listing!">
->>>>>>> 9a045de (resolve merge conflicts)
       </form>
     </section>
   </body>
 </html>
-=======
-<h1>Add a new listing!</h1>
-<div>
-<form action="/edit_listing" method="POST">
-  Name of listing: <input type="text" name="title" required><br>
-  Description: <input type="text" name="description" required><br>
-  Price per day (£): <input type="text" name="price_per_night" required><br>
-  <section class='listing_range'>
-    Select the maximum date range when your room is available.<br>
-    If you wish to block out unavailable dates during this time you can do so later.<br>
-    Start of listing: <input type='date' name='availability_range_min' 
-                             value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                             min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-    End of listing: <input type='date' name='availability_range_max' 
-                             value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                             min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-  </section>
-  <input type="submit" name="submit", value="Add listing!">
-</form>
-</div>
->>>>>>> 3e86296 (integrating date range for listing)
