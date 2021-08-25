@@ -7,12 +7,14 @@
     <header><p style="text-align:right;"><a href="/login">Log In</a><p></header>
     <body>
       <section id=‘box’>
+      <center>
         <h1>Thanks for signing up <%="#{@new_user.first_name}" %>! Please sign in with your new username and password here:</h1>
         <form action="/login" method="post"><br>
         Username:    <input type="text" name="user_name"><br>
         Password: <input type="password" name="password"><br>
         <input type="submit" value="Log In"><br>
         </form>
+        </center>
     </section>
   </body>
 </html>
