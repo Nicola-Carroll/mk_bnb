@@ -36,16 +36,6 @@ h3 {
   border-radius: 40px;
 }
 
-#name_box {
-  border-radius: 8px;
-  width: 150px;
-  height: 3vh;
-  font-family: aileron, sans-serif;
-  text-align: center;
-  background-color: #fff9e6;
-  border: 2px solid #66d9ff;
-}
-
 input {
   border-radius: 8px;
   /* height: 5vh; */
@@ -72,7 +62,6 @@ form hr {
   width: 30%;
   border: 1px solid #cceeff;
 }
-
 
 button {
   border-radius: 8px;

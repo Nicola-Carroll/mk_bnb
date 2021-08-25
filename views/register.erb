@@ -6,7 +6,7 @@
   </head>
     <header><p style="text-align:right;"><a href="/login">Log In</a><p></header>
   <body>
-    <img src='images/makers_logo.jpg' alt='Fluffy Kitten' id='logo'>
+    <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
       <h2>Thanks for signing up <%= "#{@new_user.first_name}" %>! Please sign in with your new username and password here:</h2>
       <form action="/login" method="post"><br>
