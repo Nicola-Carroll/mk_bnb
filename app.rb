@@ -73,26 +73,27 @@ class Mkbnb < Sinatra::Base
 
   post '/edit_listing' do
 
-    availability = Availability.new(
+    dates = Availability.new(
       params[:availability_range_min],
-      params[:availability_range_max]).range_as_strings
+      params[:availability_range_max]
+    ).range_as_strings
 
     Room.create!(
       title: params[:title],
       description: params[:description],
       price_per_night: params[:price_per_night].to_f,
-      availability: availability,
+      availability: dates,
       user_id: session[:current_user].id
     )
-    
-    # @availability = string_to_array(Room.last.availability)
-    @availability = Room.last.availability
+
+    session[:edit_room] = Room.last
+    @availability = session[:edit_room].availability
     erb :edit_listing
   end
 
   post '/listings' do
-    p params
-    @rooms = Room.all
+    Room.update_availability(session[:edit_room].id, params)
+    @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
 
