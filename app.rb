@@ -1,6 +1,7 @@
 require './config/environment'
 require './models/user'
 require './models/rooms'
+require 'date'
 
 require 'sinatra/base'
 require 'sinatra'
