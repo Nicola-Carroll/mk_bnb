@@ -12,6 +12,17 @@
           <li><%= user.user_name %></li>
           <% end %>
         </h1>
+        <h1>Register today! Please provide us with some simple details:</h1>
+        <form action="/register" method="post"><br>
+        First Name:    <input type="text" name="first_name"><br>
+        Last Name:    <input type="text" name="last_name"><br>
+        Email:    <input type="text" name="email"><br>
+        Username:    <input type="text" name="user_name"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Sign Up!"><br>
+        </form>
+        <br>
+        Already registered? <br>
         <form action='/login' method='get'>
         <input type="submit" id="log_in" value="Log In">
         </form>
