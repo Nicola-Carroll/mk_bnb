@@ -66,7 +66,7 @@ class Mkbnb < Sinatra::Base
     Room.create!(
       title: params[:title],
       description: params[:description],
-      price_per_night:params[:price_per_night].to_f,
+      price_per_night: params[:price_per_night].to_f,
       user_id: session[:current_user].id
     )
     @rooms = Room.all
