@@ -12,7 +12,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'simplecov', require: false
 gem 'simplecov-console', require: false
-
+gem 'yaml'
 
 group :development do
     gem 'tux'
