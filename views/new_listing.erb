@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <title>MakersBnB</title>
-      <link rel=“stylesheet” type=“text/css” href=“style.css”>
-    </head>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
     <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
     <a href="/explore_rooms">Explore Rooms</a>&nbsp;
     <a href="/requests">Requests</a>&nbsp;
     <a href="/logout">Log Out</a>
     <p></header>
-    <body>
-      <section id=‘box’>
-      <center>
-      <h1>Add a new listing!</h1>
-      <div>
+  <body>
+    <img src='images/makers_logo.jpg' id='logo'>
+    <section id='box'>
+      <br><h2>Add a new listing!</h2>
       <form action="/listings" method="POST">
         Name of listing: <input type="text" name="title"><br>
         Description: <input type="text" name="description"><br>
-        Price per day (£): <input type="text" name="price_per_night"><br>
-        <input type="submit" name="submit", value="Add listing!">
+        Price per day (£): <input type="number" name="price_per_night"><br>
+        <input type="submit" name="submit" value="Add listing!">
       </form>
-      </div>
-      </center>
     </section>
   </body>
 </html>

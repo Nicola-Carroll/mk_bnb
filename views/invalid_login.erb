@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <title>MakersBnB</title>
-      <link rel=“stylesheet” type=“text/css” href=“style.css”>
-    </head>
-    <body>
-      <section id=‘box’>
-      <center>
-        <h1>Invalid username or password, please try again</h1>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <img src='images/makers_logo.jpg' id='logo'>
+    <section id='box'>
+      <section id='login'>
+        <br><h2>Invalid username or password, please try again</h2>
         <form action="/login" method="post"><br>
-        Username:    <input type="text" name="user_name"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit" value="Log In"><br>
+          <input type="text" placeholder='Username' name="user_name"><br>
+          <input type="password" placeholder='Password' name="password"><br>
+          <input type="submit" value="Log In"><br>
         </form>
-        Not registered? Sign up <a href="/">here</a>!
-        </center>
+        <hr>
+        <h3>Not registered yet? Sign up <a href="/">here</a>!</h3>
+      </section>
     </section>
   </body>
 </html>

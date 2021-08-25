@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <title>MakersBnB</title>
-      <link rel=“stylesheet” type=“text/css” href=“style.css”>
-    </head>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
     <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
     <a href="/explore_rooms">Explore Rooms</a>&nbsp;
     <a href="/requests">Requests</a>&nbsp;
     <a href="/logout">Log Out</a>
     <p></header>
-    <body>
-      <section id=‘box’>
-      <h1>Your listings</h1>
-      <div>
-      <%= "#{@rooms.last.title} added!" %>
-      </div>
-      <div>
-        <% @rooms.each do |room| %>
+  <body>
+    <img src='images/makers_logo.jpg' id='logo'>
+    <section id='box'>
+      <br><h2>Your listings</h2>
+      <h2><%= "#{@rooms.last.title} added!" %></h2>
+      <h3><% @rooms.each do |room| %>
           <li><%= room.title %></li>
-        <% end %>
-      </div>
+        <% end %></h3>
     </section>
   </body>
 </html>
