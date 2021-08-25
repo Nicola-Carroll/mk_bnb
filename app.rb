@@ -1,11 +1,14 @@
 require './config/environment'
 require './models/user'
 require './models/rooms'
-require 'date'
+require './models/availability'
+require_relative 'helper_methods'
 
+require 'date'
 require 'sinatra/base'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'yaml'
 
 class Mkbnb < Sinatra::Base
   enable :sessions
@@ -64,19 +67,16 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/listings' do
-    # these two params will be date strings
-    # convert into a date
-    # create a date range between min and max
-    # create an array containing every single singular day in that range
-    params[:availability_range_min]
-    params[:availability_range_max]
 
-
+    availability = Availability.new(
+      params[:availability_range_min],
+      params[:availability_range_max]).range_as_strings
 
     Room.create!(
       title: params[:title],
       description: params[:description],
       price_per_night: params[:price_per_night].to_f,
+      availability: availability,
       user_id: session[:current_user].id
     )
     @rooms = Room.all

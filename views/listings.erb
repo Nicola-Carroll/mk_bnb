@@ -4,6 +4,6 @@
 </div>
 <div>
   <% @rooms.each do |room| %>
-    <li><%= room.title %></li>
+    <li><%= room.title %><%= room.availability %></li>
   <% end %>
 </div>
