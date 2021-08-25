@@ -1,5 +1,7 @@
 require 'date'
 
+# this class is dependent on string date format being yyyy-mm-dd
+
 class Availability
 
   def initialize(date_1, date_2)

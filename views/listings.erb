@@ -15,8 +15,8 @@
       <br><h2>Your listings</h2>
       <h2><%= "#{@rooms.last.title} added!" %></h2>
       <h3><% @rooms.each do |room| %>
-          <li><%= room.title %></li>
-        <% end %></h3>
+          <li><%= room.title %><%= room.availability %></li>
+          <% end %></h3>
     </section>
   </body>
 </html>
