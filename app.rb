@@ -110,7 +110,7 @@ class Mkbnb < Sinatra::Base
   get '/requests' do
     erb :requests
   end
-  
+
   # get '/edit_listing' do
   #   @availability = string_to_array(Room.last.availability)
   #   erb :edit_listing
