@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_143258) do
-
-  create_table "available_dates", force: :cascade do |t|
-    t.date "start_date", null: false
-    t.date "end_date"
-    t.integer "rooms_id", null: false
-    t.index ["rooms_id"], name: "index_available_dates_on_rooms_id"
-  end
+ActiveRecord::Schema.define(version: 2021_08_25_133723) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "title", limit: 100, null: false
