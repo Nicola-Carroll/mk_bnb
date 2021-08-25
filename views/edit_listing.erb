@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>MakersBnB</title>
+      <link rel=“stylesheet” type=“text/css” href=“style.css”>
+    </head>
+    <body>
+      <section id=‘box’>
+        <form action='/listings' method='post'>
+          <% @availability.each do |date| %>
+            <input type="checkbox" name="<%= date %>" value="unavailable">
+            <label for="<%= date %>"><%= date %></label><br>
+          <% end %><br>
+          <input type='submit' name='submit_changes_of_listing' value='Submit Changes'>
+        </form>
+    </section>
+  </body>
+</html>
