@@ -71,7 +71,7 @@ class Mkbnb < Sinatra::Base
     redirect '/'
   end
 
-  post '/listings' do
+  post '/edit_listing' do
 
     availability = Availability.new(
       params[:availability_range_min],
@@ -84,6 +84,14 @@ class Mkbnb < Sinatra::Base
       availability: availability,
       user_id: session[:current_user].id
     )
+    
+    # @availability = string_to_array(Room.last.availability)
+    @availability = Room.last.availability
+    erb :edit_listing
+  end
+
+  post '/listings' do
+    p params
     @rooms = Room.all
     erb :listings
   end
@@ -101,6 +109,12 @@ class Mkbnb < Sinatra::Base
   get '/requests' do
     erb :requests
   end
+  
+  # get '/edit_listing' do
+  #   @availability = string_to_array(Room.last.availability)
+  #   erb :edit_listing
+  # end
+
 
   run! if app_file == $0
 
