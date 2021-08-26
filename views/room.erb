@@ -12,11 +12,22 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>You are viewing <%="#{@room}"%></h2>
+      <br><h2>You are viewing <%= @selected_room %></h2>
       <div>
         <form action="/make_request" method="post">
           <input type="submit" name="make_request" value="Make Request!">
         </form>
+
+        <form>
+          <ul><% Room.all.reverse.each do |room| %>
+          <h2><%= room.title %></h2>
+          <%= room.description %><br>
+          Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
+          posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
+  
+        </form>
+        <% end %></ul> 
+
       </div>
     </section>
   </body>

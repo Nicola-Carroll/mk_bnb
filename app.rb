@@ -54,10 +54,6 @@ class Mkbnb < Sinatra::Base
     end
   end
 
-  get '/explore_rooms' do
-    erb :explore_rooms
-  end
-
   get '/invalid_login' do
     erb :invalid_login
   end
@@ -87,23 +83,30 @@ class Mkbnb < Sinatra::Base
     )
 
     session[:edit_room] = Room.last
+    # p session[:edit_room]
     @availability = session[:edit_room].availability
     erb :edit_listing
   end
 
   post '/listings' do
+    # p session[:edit_room]
     Room.update_availability(session[:edit_room].id, params)
     @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
 
+  get '/explore_rooms' do
+    @filtered_dates = Availability.new('2021-08-25', '2021-08-30').range_as_strings
+    erb :explore_rooms
+  end
+
   post '/book' do
-    session[:room] = params[:room]
+    session[:selected_room] = params[:selected_room]
     redirect '/room'
   end
 
   get '/room' do
-    @room = session[:room]
+    @selected_room = session[:selected_room]
     erb :room
   end
 

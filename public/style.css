@@ -36,6 +36,17 @@ h3 {
   border-radius: 40px;
 }
 
+textarea {
+  border-radius: 8px;
+  /* height: 5vh; */
+  /* width: 80px; */
+  font-family: aileron, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  background-color: #fff9e6;
+  border: 2px solid #ccd9ff;
+}
+
 input {
   border-radius: 8px;
   /* height: 5vh; */

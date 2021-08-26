@@ -18,6 +18,20 @@
           <input type="submit" name="add_listing" value="Add new listing!">
         </form><br>
         <hr>
+        <form id='date_filter'>
+          <h3>Filter out available rooms by date</h3>
+          Check in: <input type='date' name='check_in_start' 
+                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
+          Check out: <input type='date' name='check_out_end' 
+                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+          <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
+        <br></form>
+        <hr>
+          <%= @filtered_dates %>
+          <%= Room.all.each { |r| puts r.id } %>
+        <hr>
         <form>
           <ul><% Room.all.reverse.each do |room| %>
           <h2><%= room.title %></h2>
@@ -26,7 +40,7 @@
           posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
         </form>
         <form action="/book" method="post"><br>
-          <input type="hidden" name="room" value="<%=room%>">
+          <input type="hidden" name="selected_room" value="<%=room%>">
           <input type="submit" value="Book It!"><br>
           <br><hr>
         </form>
