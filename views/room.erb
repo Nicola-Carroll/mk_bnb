@@ -28,9 +28,7 @@
           <h3>Choose your check-in dates for <%=@room.title%> below and make a booking request!</h3><br>
           <a>Check-in date: <input type='date' name='date_from' 
         value="<%= @min_date %>" min="<%= @min_date%>" max="<%= @max_date %>" required><br>
-          <a>Check-out date:  <input type='date' name='date_to' 
-        value="<%= @max_date %>" min="<%= @min_date %>" max="<%= @max_date %>" required><br>
-          <br><button type="submit" id='big_button' name="make_request" style>Make Request!</button>
+          <br><button type="submit" id='big_button' name="make_request" style>Select your checkout date</button>
         </form>
       </form>
     </section>

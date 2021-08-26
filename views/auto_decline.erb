@@ -12,17 +12,15 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>You are viewing <%=@room.title%><br>
-      <%=@room.description%><br>
-      <%=@room.price_per_night%>
+      <br><h2>Unfortunately your booking request for <%=Room.find_by(id: "#{@current_request.room_id}").title %> 
+      from <%= @current_request.date_from %> to <%= @current_request.date_to %>
+      has been automatically declined as it is no longer available for your chosen dates.<br>
+
+
+
+      Please go back and select new dates.<br>
       </h2>
       <div>
-        Select your check out date, or go back to adjust your check in <br>
-        <form action="/select_checkout" method="post">
-        Check-out: <input type='date' name='date_to' 
-        value="<%= @current_check_in %>" min="<%= @current_check_in %>" max="<%= @max_check_out %>" required><br>
-          <input type="submit" name="make_request" value="Make Request!">
-        </form>
       </div>
     </section>
   </body>

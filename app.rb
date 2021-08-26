@@ -156,13 +156,24 @@ class Mkbnb < Sinatra::Base
       date_from: session[:date_from], 
       date_to: params[:date_to]
       ).id
-    redirect '/request_confirmation'
+    if BookingRequest.is_valid(session[:current_request_id]) 
+      redirect '/request_confirmation'
+    else
+      BookingRequest.auto_decline(session[:current_request_id])
+      redirect "/auto_decline"
+    end
   end
 
   get "/request_confirmation" do
     @current_request = BookingRequest.find_by(id: session[:current_request_id])
     erb :request_confirmation
   end
+
+  get "/auto_decline" do
+    @current_request = BookingRequest.find_by(id: session[:current_request_id])
+    erb :auto_decline
+  end
+
 
   post '/request_response' do
     p params
