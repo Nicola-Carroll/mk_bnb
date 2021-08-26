@@ -122,6 +122,8 @@ class Mkbnb < Sinatra::Base
   end
 
   get '/room' do
+    @max_date = Room.max_available_date(session[:room_id])
+    @min_date = Room.min_available_date(session[:room_id])
     @room = Room.find_by(id: session[:room_id])
     erb :room
   end
