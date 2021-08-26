@@ -94,8 +94,21 @@ class Mkbnb < Sinatra::Base
   end
 
   get '/explore_rooms' do
-    @filtered_dates = Availability.new('2021-08-25', '2021-08-30').range_as_strings
     erb :explore_rooms
+  end
+
+  post '/explore_filtered_rooms' do
+    session[:check_in_start] = params[:check_in_start]
+    session[:check_out_end] = params[:check_out_end]
+    redirect '/explore_filtered_rooms'
+  end 
+
+  get '/explore_filtered_rooms' do
+    @filtered_dates = Availability.new(
+      session[:check_in_start],
+      session[:check_out_end]
+      ).range_as_strings
+    erb :explore_filtered_rooms
   end
 
   post '/book' do

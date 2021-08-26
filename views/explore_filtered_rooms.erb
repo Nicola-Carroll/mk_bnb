@@ -12,13 +12,8 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <section id='explore_rooms'>
-        <br><h2>Welcome back <%="#{@signed_in_user.first_name}" %>!</h2>
-        <form action="/create_listing" method="GET">
-          <input type="submit" name="add_listing" value="Add new listing!">
-        </form><br>
-        <hr>
-        <form id='date_filter' action="/explore_filtered_rooms" method="post">
+      <section id='explore_filtered_rooms'>
+        <form id='date_filter'>
           <h3>Filter out available rooms by date</h3>
           Check in: <input type='date' name='check_in_start' 
                                value="<%= Date.today.strftime("%Y-%m-%d") %>"
@@ -29,10 +24,14 @@
           <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
         <br></form>
         <hr>
-          
+        <br><h2>Showing rooms available from <%= %> to <%=%></h2>
+        <form action="/create_listing" method="GET">
+          <input type="submit" name="add_listing" value="Add new listing!">
+        </form><br>
         <hr>
-        <form>
-          <ul><% Room.all.reverse.each do |room| %>
+          <%= @filtered_dates %>
+          <% Room.all.each do |room| %>
+            <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
           <h2><%= room.title %></h2>
           <%= room.description %><br>
           Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
@@ -43,6 +42,9 @@
           <input type="submit" value="Book It!"><br>
           <br><hr>
         </form>
+        <% else %>
+          <h3>Sorry no rooms available on those dates</h3>
+        <% end %>
         <% end %></ul> 
       </section>
     </section>
