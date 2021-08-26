@@ -11,40 +11,43 @@
     <p></header>
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
-    <section id='box'>
-      <section id='explore_rooms'>
-        <br><h2>Welcome back <%="#{@signed_in_user.first_name}" %>!</h2>
-        <form action="/create_listing" method="GET">
-          <input type="submit" name="add_listing" value="Add new listing!">
-        </form><br>
-        <hr>
-        <form id='date_filter' action="/explore_filtered_rooms" method="post">
-          <h3>Filter out available rooms by date</h3>
-          Check in: <input type='date' name='check_in_start' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
-          Check out: <input type='date' name='check_out_end' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-          <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
-        <br></form>
-        <hr>
-          
-        <hr>
-        <form>
-          <ul><% Room.all.reverse.each do |room| %>
-          <h2><%= room.title %></h2>
-          <img src="<%= room.picture_url %>" id='room_url'><br>
-          Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
-          posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
-        </form>
-        <form action="/book" method="post"><br>
-          <input type="hidden" name="room_id" value="<%=room.id%>">
-          <input type="submit" value="Book It!"><br>
-          <br><hr>
-        </form>
-        <% end %></ul> 
-      </section>
+    <section id='box_explore'>
+      <form>
+        <section>
+          <br><h2>Welcome back <%= @signed_in_user.first_name.capitalize %>!</h2><br>
+          <form action="/create_listing" method="GET">
+            <button type="submit" name="add_listing" id='big_button' style>Add new listing!</button><br>
+          </form><br>
+          <hr id='explorer'>
+          <form id='date_filter' action="/explore_filtered_rooms" method="post">
+            <h3>Filter out available rooms by date</h3><br>
+            <a>Check in: </a>
+            <input type='date' name='check_in_start' 
+                   value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                   min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
+            <a>Check out: </a>
+            <input type='date' name='check_out_end' 
+                   value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                   min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+            <br><button type="submit" name="filter_rooms" style>Filter rooms</button><br>
+          </form><br>
+          <hr id='explorer'>
+          <form>
+          <%# <form action="/book" method="post"> %>
+            <% Room.all.reverse.each do |room| %>
+            <h2><%= room.title %></h2><br>
+            <img src="<%= room.picture_url %>" id='room_url'>
+            <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
+            <h4>posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %></h4>
+          </form>
+          <form action="/book" method="post">
+            <input type="hidden" name="room_id" value="<%=room.id%>">
+            <input type="submit" value="Book It!"><br>
+            <br><hr>
+          </form>
+          <% end %>
+        </section>
+      <form>
     </section>
   </body>
 </html>

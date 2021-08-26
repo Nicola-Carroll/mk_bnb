@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_101146) do
+ActiveRecord::Schema.define(version: 2021_08_26_162355) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.string "booking_status", limit: 20, null: false
-    t.date "date_from"
-    t.date "date_to"
+    t.string "date_from"
+    t.string "date_to"
     t.index ["room_id"], name: "index_requests_on_room_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_101146) do
     t.float "price_per_night", null: false
     t.integer "user_id", null: false
     t.string "availability"
+    t.string "picture_url"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 

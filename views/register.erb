@@ -8,11 +8,11 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <h2>Thanks for signing up <%= "#{@new_user.first_name}" %>! Please sign in with your new username and password here:</h2>
+      <br><h2>Thanks for signing up <%= "#{@new_user.first_name}" %>! Please sign in with your new username and password here:</h2>
       <form action="/login" method="post"><br>
-        <input type="text" placeholder='Username' name="user_name"><br>
-        <input type="password" placeholder='Password' name="password"><br>
-        <input type="submit" value="Log In"><br>
+        <input type="text" placeholder='Username' name="user_name" required><br>
+        <input type="password" placeholder='Password' name="password" required><br>
+        <br><button type="submit" name="submt" style>Log In</button>
       </form>
     </section>
   </body>

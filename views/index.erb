@@ -12,17 +12,18 @@
       <h3>Register today!<br>Please provide us with some personal details:</h3>
       <section id='register'>
         <form action="/register" method="post"><br>
-          First Name:<br><input type="text" name="first_name"><br>
-          Last Name:<br><input type="text" name="last_name"><br>
-          Email:<br><input type="email" name="email"><br>
-          Username:<br><input type="text" name="user_name"><br>
-          Password:<br><input type="password" name="password"><br>
-          <input type="submit" value="Sign Up!"><br>
+          <a>First Name:</a><br><input type="text" name="first_name" required><br>
+          <a>Last Name:</a><br><input type="text" name="last_name" required><br>
+          <a>Email:</a><br><input type="email" name="email" required><br>
+          <a>Username:</a><br><input type="text" name="user_name" required><br>
+          <a>Password:</a><br><input type="password" name="password" required><br>
+           <br><button type="submit" name='submit' style>Sign Up!</button>
+          <%# <input type="submit" value="Sign Up!"><br> %>
         </form>
-        <hr>
+        <br><hr>
         <h3>Already registered?</h3>
         <form action='/login' method='get'>
-          <input type="submit" id="log_in" value="Log In">
+          <br><button type="submit" name="log_in" id="log_in" style>Log In</button>
         </form>
       </section>
     </section>
