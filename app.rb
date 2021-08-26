@@ -128,6 +128,11 @@ class Mkbnb < Sinatra::Base
     erb :request_confirmation
   end
 
+  post '/request_response' do
+    p params
+    erb :requests
+  end
+
   # get '/edit_listing' do
   #   @availability = string_to_array(Room.last.availability)
   #   erb :edit_listing
