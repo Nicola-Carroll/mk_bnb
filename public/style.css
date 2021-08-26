@@ -16,7 +16,13 @@ h1 {
   text-align: center;
 }
 
-h2, h3 {
+h2 {
+  text-align: center;
+  font-style: normal;
+  font-weight: 200;
+}
+
+h3 {
   text-align: center;
   font-style: normal;
   font-weight: 200;
