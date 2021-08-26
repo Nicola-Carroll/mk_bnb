@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+    <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
+    <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/requests">Requests</a>&nbsp;
+    <a href="/logout">Log Out</a>
+    <p></header>
+  <body>
+    <img src='images/makers_logo.jpg' id='logo'>
+    <section id='box'>
+      <section id='explore_filtered_rooms'>
+      <form id='date_filter' action="/explore_filtered_rooms" method="post">
+      <h3>Filter out available rooms by date</h3>
+      Check in: <input type='date' name='check_in_start' 
+                           value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                           min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
+      Check out: <input type='date' name='check_out_end' 
+                           value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                           min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+      <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
+      <br></form>
+        <hr>
+        <br><h2>Showing rooms available from <%= PrintDate.selected_date(@filtered_dates.first) %> to <%= PrintDate.selected_date(@filtered_dates.last)%></h2>
+        <form action="/create_listing" method="GET">
+          <input type="submit" name="add_listing" value="Add new listing!">
+        </form><br>
+        <hr>
+          <% hit_counter = 0 %>
+          <% Room.all.each do |room| %>
+            <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
+            <% hit_counter += 1 %>
+          <h2><%= room.title %></h2>
+          <%= room.description %><br>
+          Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
+          posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
+        </form>
+        <form action="/book" method="post"><br>
+          <input type="hidden" name="room_id" value="<%=room.id%>">
+          <input type="submit" value="Book It!"><br>
+          <br><hr>
+        </form>
+        <% end %>
+        <% end %>
+        <% if hit_counter == 0 %>
+        <h3>Sorry no rooms available on those dates!</h3>
+        <%end%></ul> 
+      </section>
+    </section>
+  </body>
+</html>

@@ -3,6 +3,7 @@ require './models/user'
 require './models/rooms'
 require './models/availability'
 require './models/request'
+require './models/printdate'
 require_relative 'helper_methods'
 
 require 'date'
@@ -55,10 +56,6 @@ class Mkbnb < Sinatra::Base
     end
   end
 
-  get '/explore_rooms' do
-    erb :explore_rooms
-  end
-
   get '/invalid_login' do
     erb :invalid_login
   end
@@ -95,6 +92,24 @@ class Mkbnb < Sinatra::Base
     Room.update_availability(session[:edit_room_id], params)
     @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
+  end
+
+  get '/explore_rooms' do
+    erb :explore_rooms
+  end
+
+  post '/explore_filtered_rooms' do
+    session[:check_in_start] = params[:check_in_start]
+    session[:check_out_end] = params[:check_out_end]
+    redirect '/explore_filtered_rooms'
+  end 
+
+  get '/explore_filtered_rooms' do
+    @filtered_dates = Availability.new(
+      session[:check_in_start],
+      session[:check_out_end]
+      ).range_as_strings
+    erb :explore_filtered_rooms
   end
 
   post '/book' do

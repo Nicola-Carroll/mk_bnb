@@ -2,13 +2,14 @@
   <html>
     <head>
       <title>MakersBnB</title>
-      <link rel=“stylesheet” type=“text/css” href=“style.css”>
+      <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-      <section id=‘box’>
+      <section id='box'>
         <form action='/listings' method='post'>
+          <h3>Please block any unavailable dates from the range previously selected.</h3>
           <% @availability.each do |date| %>
-            <input type="checkbox" name="<%= date %>" value="unavailable">
+            <input type="radio" name="<%= date %>" value="unavailable">
             <label for="<%= date %>"><%= date %></label><br>
           <% end %><br>
           <input type='submit' name='submit_changes_of_listing' value='Submit Changes'>
