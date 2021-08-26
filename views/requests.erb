@@ -13,7 +13,7 @@
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
       <h2>Requests you have made:</h2>
-      <% Request.where(user_id: session[:current_user].id).reverse.each do |request| %>
+      <% BookingRequest.where(user_id: session[:current_user].id).reverse.each do |request| %>
         <li><%=Room.find_by(id: request.room_id).title %><br>
         <%=request.date_from %> to <%=request.date_to %> <br>
         <%=request.booking_status%>
@@ -21,7 +21,7 @@
         <%end%>
       <h2>Requests you have received:</h2>
       <% Room.where(user_id: session[:current_user].id).each do |room| %>
-        <% Request.where(room_id: room.id).reverse.each do |request| %>
+        <% BookingRequest.where(room_id: room.id).reverse.each do |request| %>
           <li><%=room.title%><br>
           <%=request.date_from %> to <%=request.date_to %> <br>
           <%=request.booking_status%><br>
