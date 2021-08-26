@@ -29,7 +29,6 @@
           <input type="submit" name="add_listing" value="Add new listing!">
         </form><br>
         <hr>
-          <%= @filtered_dates %>
           <% Room.all.each do |room| %>
             <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
           <h2><%= room.title %></h2>
