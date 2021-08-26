@@ -12,9 +12,18 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>You are viewing <%="#{@room}"%></h2>
+      <br><h2>You are viewing <%=@room.title%><br>
+      <%=@room.description%><br>
+      <%=@room.price_per_night%>
+      </h2>
       <div>
         <form action="/make_request" method="post">
+        Entry date: <input type='date' name='date_from' 
+        value="<%= Date.today.strftime("%Y-%m-%d") %>"
+        min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+        Exit date: <input type='date' name='date_to' 
+        value="<%= Date.today.strftime("%Y-%m-%d") %>"
+        min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
           <input type="submit" name="make_request" value="Make Request!">
         </form>
       </div>

@@ -50,8 +50,8 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    User.delete_all
     Room.delete_all
+    User.delete_all
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
