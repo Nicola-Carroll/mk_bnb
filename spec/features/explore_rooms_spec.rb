@@ -18,7 +18,6 @@ feature 'checks the explore rooms page' do
     fill_in("availability_range_min", with: "2021-09-11")
     fill_in("availability_range_max", with: "2021-09-13")
     click_button("submit")
-    #click_button("submit_changes_of_listing")
   end
 
   scenario 'adds a new room and checks it appears on the page' do
