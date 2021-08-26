@@ -127,7 +127,7 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/make_request' do
-    session[:current_request_id] = Request.create!(
+    session[:current_request_id] = BookingRequest.create!(
       user_id: session[:current_user].id, 
       room_id: session[:room_id], 
       booking_status: "pending",
@@ -138,11 +138,13 @@ class Mkbnb < Sinatra::Base
   end
 
   get "/request_confirmation" do
-    @current_request = Request.find_by(id: session[:current_request_id])
+    @current_request = BookingRequest.find_by(id: session[:current_request_id])
     erb :request_confirmation
   end
 
   post '/request_response' do
+    p params
+    BookingRequest.process_request_reponse(params)
     erb :requests
   end
 
