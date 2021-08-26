@@ -4,12 +4,17 @@ require './models/rooms'
 
 class BookingRequest < ActiveRecord::Base
   self.table_name = "requests"
+  # validate :booking_must_be_at_least_one_night
 
   REQUEST_RESPONSES = ["Approve", "Decline"]
   REQUEST_STATUSES = {
     "Approve" => "approved",
     "Decline" => "declined"
   }
+
+  # def booking_must_be_at_least_one_night
+  #   (charge_to - charge_from).to_i >= 1
+  # end
 
   module ClassMethods
     private
@@ -49,12 +54,12 @@ class BookingRequest < ActiveRecord::Base
     def update_availability(params)
       request_ids = request_ids_from(params)
       request_ids.each do |id|
-      if params[id] == "Approve"
-        Room.update_availability(
-          room_id_from_request(id),
-          dates_array_from(id, params)
-        )
-      end
+        if params[id] == "Approve"
+          Room.update_availability(
+            room_id_from_request(id),
+            dates_array_from(id, params)
+          )
+        end
       end
     end
   
@@ -66,6 +71,8 @@ class BookingRequest < ActiveRecord::Base
     update_availability(params)
     update_statuses(params)
   end
+
+  # def self.auto_reject
 
 
 end

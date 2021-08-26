@@ -21,6 +21,9 @@
         <h4><%=@room.description%></h4>
         <h4>Available for £<%= '%.2f' % @room.price_per_night %> per night</h4><br>
         <hr id=pic_hr>
+    <section id='box'>
+      <div>
+        You must select at least one night or your request will be rejected <br>
         <form action="/make_request" method="post">
           <h3>Choose your check-in dates for <%=@room.title%> below and make a booking request!</h3><br>
           <a>Check-in date: <input type='date' name='date_from' 
