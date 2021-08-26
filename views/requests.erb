@@ -26,10 +26,12 @@
           <%=request.date_from %> to <%=request.date_to %> <br>
           <%=request.booking_status%><br>
           Made by: <%=User.find_by(id: request.user_id).user_name%>
+          <%if request.booking_status=="pending"%>
             <form action="/request_response" method="post"><br>
             <input type="submit" value="Approve" name="<%=request.id%>">
             <input type="submit" value="Decline" name="<%=request.id%>">
             </form>
+          <%end%>
           <hr>
           </li>
         <%end%>
