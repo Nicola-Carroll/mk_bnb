@@ -1,5 +1,4 @@
 require 'active_record'
-require_relative '../helper_methods'
 
 class Room < ActiveRecord::Base
   serialize :availability, Array
