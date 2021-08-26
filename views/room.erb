@@ -13,8 +13,11 @@
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
       <br><h2>You are viewing <%=@room.title%><br>
-      <%=@room.description%><br>
-      <%=@room.price_per_night%>
+      <hr id='pic_hr'>
+      <br><img src="<%= @room.picture_url %>" id='room_url_cinema'><br>
+      <hr id='pic_hr'>
+      <br><%= @room.description %><br>
+      <%= '%.2f' % @room.price_per_night %>
       </h2>
       <div>
         <form action="/make_request" method="post">

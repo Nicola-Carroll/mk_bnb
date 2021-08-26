@@ -34,7 +34,7 @@
         <form>
           <ul><% Room.all.reverse.each do |room| %>
           <h2><%= room.title %></h2>
-          <%= room.description %><br>
+          <img src="<%= room.picture_url %>" id='room_url'><br>
           Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
           posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
         </form>

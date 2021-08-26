@@ -50,7 +50,30 @@ textarea {
 input {
   border-radius: 8px;
   /* height: 5vh; */
-  /* width: 80px; */
+  /* width: 175px; */
+  font-family: aileron, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  background-color: #fff9e6;
+  border: 2px solid #ccd9ff;
+}
+
+#room_url {
+  height: 150px;
+  display: block;
+  margin: auto;
+}
+
+#room_url_cinema {
+  height: 400px;
+  display: block;
+  margin: auto;
+}
+
+#url_pic {
+  border-radius: 8px;
+  /* height: 5vh; */
+  width: 175px;
   font-family: aileron, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -60,6 +83,11 @@ input {
 
 hr {
   width: 98%;
+  border: 1px solid #cceeff;
+}
+
+#pic_hr {
+  width: 50%;
   border: 1px solid #cceeff;
 }
 
