@@ -5,7 +5,6 @@ def string_to_array(str)
   YAML::load(str)
 end
 
-
 def unavailable_dates(params)
   params.map { |date , status | date if status=="unavailable" }
 end

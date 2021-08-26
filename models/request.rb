@@ -24,17 +24,14 @@ class BookingRequest < ActiveRecord::Base
       params.map { |request_id, response| request_id if REQUEST_RESPONSES.include?(response) }
     end
 
-    def dates_array_from(params)
-      request_ids = request_ids_from(params)
-      request_ids.map do |id|
-        request = self.find_by(id: id)
-        dates = Availability.new(
-          request.date_from.to_s,
-          request.date_to.to_s
-        ).range_as_strings
-        dates.pop
-        dates
-      end
+    def dates_array_from(id, params)
+      request = self.find_by(id: id)
+      dates = Availability.new(
+        request.date_from.to_s,
+        request.date_to.to_s
+      ).range_as_strings
+      dates.pop
+      dates
     end
 
     def update_statuses(params)
@@ -52,12 +49,12 @@ class BookingRequest < ActiveRecord::Base
     def update_availability(params)
       request_ids = request_ids_from(params)
       request_ids.each do |id|
-        if params[id] == "Approve"
-          Room.update_availability(
-            room_id_from_request(id),
-            dates_array_from(params)
-          )
-        end
+      if params[id] == "Approve"
+        Room.update_availability(
+          room_id_from_request(id),
+          dates_array_from(id, params)
+        )
+      end
       end
     end
   

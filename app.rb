@@ -90,7 +90,10 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/listings' do
-    Room.update_availability(session[:edit_room_id], params)
+    Room.update_availability(
+      session[:edit_room_id],
+      unavailable_dates(params)
+    )
     @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
