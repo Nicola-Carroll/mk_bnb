@@ -80,6 +80,7 @@ class Mkbnb < Sinatra::Base
       title: params[:title],
       description: params[:description],
       price_per_night: params[:price_per_night].to_f,
+      picture_url: params[:picture_url],
       availability: dates,
       user_id: session[:current_user].id
     ).id

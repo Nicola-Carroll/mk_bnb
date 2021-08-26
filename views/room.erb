@@ -11,22 +11,26 @@
     <p></header>
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
-    <section id='box'>
-      <br><h2>You are viewing <%=@room.title%><br>
-      <%=@room.description%><br>
-      <%=@room.price_per_night%>
-      </h2>
-      <div>
+    <section id='room_box'>
+      <form>
+        <br><h2>You are viewing <%=@room.title%></h2><br>
+        <hr id=pic_hr>
+        <img src="<%= @room.picture_url %>" id='room_url_cinema'>
+        <hr id=pic_hr>
+        <h4><%=@room.description%></h4>
+        <h4>Available for £<%= '%.2f' % @room.price_per_night %> per night</h4><br>
+        <hr id=pic_hr>
         <form action="/make_request" method="post">
-        Entry date: <input type='date' name='date_from' 
-        value="<%= Date.today.strftime("%Y-%m-%d") %>"
-        min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-        Exit date: <input type='date' name='date_to' 
-        value="<%= Date.today.strftime("%Y-%m-%d") %>"
-        min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-          <input type="submit" name="make_request" value="Make Request!">
+          <h3>Choose your check-in dates for <%=@room.title%> below and make a booking request!</h3><br>
+          <a>Check-in date: </a><input type='date' name='date_from' 
+            value="<%= Date.today.strftime("%Y-%m-%d") %>"
+            min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
+          <a>Check-out date: </a><input type='date' name='date_to' 
+            value="<%= Date.today.strftime("%Y-%m-%d") %>"
+            min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+          <br><button type="submit" id='big_button' name="make_request" style>Make Request!</button>
         </form>
-      </div>
+      </form>
     </section>
   </body>
 </html>

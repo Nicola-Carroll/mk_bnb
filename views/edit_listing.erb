@@ -7,12 +7,13 @@
     <body>
       <section id='box'>
         <form action='/listings' method='post'>
-          <h3>Please block any unavailable dates from the range previously selected.</h3>
+          <br><h2>If you wish to block any dates from the range previously selected,</h2>
+          <h2>please mark and block these dates before submiting your changes.</h2><br>
           <% @availability.each do |date| %>
             <input type="radio" name="<%= date %>" value="unavailable">
             <label for="<%= date %>"><%= date %></label><br>
           <% end %><br>
-          <input type='submit' name='submit_changes_of_listing' value='Submit Changes'>
+          <br><button type="submit" name="submit_changes_of_listing" style>Submit Changes</button>
         </form>
     </section>
   </body>
