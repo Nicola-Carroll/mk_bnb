@@ -3,6 +3,7 @@ require './models/user'
 require './models/rooms'
 require './models/availability'
 require './models/request'
+require './models/printdate'
 require_relative 'helper_methods'
 
 require 'date'
@@ -142,7 +143,6 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/request_response' do
-    p params
     erb :requests
   end
 

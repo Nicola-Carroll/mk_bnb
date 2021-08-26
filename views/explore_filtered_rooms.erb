@@ -13,24 +13,26 @@
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
       <section id='explore_filtered_rooms'>
-        <form id='date_filter'>
-          <h3>Filter out available rooms by date</h3>
-          Check in: <input type='date' name='check_in_start' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
-          Check out: <input type='date' name='check_out_end' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-          <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
-        <br></form>
+      <form id='date_filter' action="/explore_filtered_rooms" method="post">
+      <h3>Filter out available rooms by date</h3>
+      Check in: <input type='date' name='check_in_start' 
+                           value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                           min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
+      Check out: <input type='date' name='check_out_end' 
+                           value="<%= Date.today.strftime("%Y-%m-%d") %>"
+                           min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
+      <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
+      <br></form>
         <hr>
-        <br><h2>Showing rooms available from <%= %> to <%=%></h2>
+        <br><h2>Showing rooms available from <%= PrintDate.selected_date(@filtered_dates.first) %> to <%= PrintDate.selected_date(@filtered_dates.last)%></h2>
         <form action="/create_listing" method="GET">
           <input type="submit" name="add_listing" value="Add new listing!">
         </form><br>
         <hr>
+          <% hit_counter = 0 %>
           <% Room.all.each do |room| %>
             <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
+            <% hit_counter += 1 %>
           <h2><%= room.title %></h2>
           <%= room.description %><br>
           Available for £<%= '%.2f' % room.price_per_night %> per night.<br>
@@ -41,10 +43,11 @@
           <input type="submit" value="Book It!"><br>
           <br><hr>
         </form>
-        <% else %>
-          <h3>Sorry no rooms available on those dates</h3>
         <% end %>
-        <% end %></ul> 
+        <% end %>
+        <% if hit_counter == 0 %>
+        <h3>Sorry no rooms available on those dates!</h3>
+        <%end%></ul> 
       </section>
     </section>
   </body>

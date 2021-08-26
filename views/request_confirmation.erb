@@ -12,7 +12,10 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>Request made: <%=@current_request.booking_status%>
+      <br><h2>Request made for <%=Room.find_by(id: "#{@current_request.room_id}").title %> 
+      from <%= @current_request.date_from %> to <%= @current_request.date_to %><br>
+      Please note this is not an official booking, and the owner will need to approve this request.<br>
+      You will be notified when this happens
       </h2>
       <div>
       </div>
