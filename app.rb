@@ -1,10 +1,14 @@
 require './config/environment'
 require './models/user'
 require './models/rooms'
+require './models/availability'
+require_relative 'helper_methods'
 
+require 'date'
 require 'sinatra/base'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'yaml'
 
 class Mkbnb < Sinatra::Base
   enable :sessions
@@ -67,14 +71,29 @@ class Mkbnb < Sinatra::Base
     redirect '/'
   end
 
-  post '/listings' do
+  post '/edit_listing' do
+
+    dates = Availability.new(
+      params[:availability_range_min],
+      params[:availability_range_max]
+    ).range_as_strings
+
     Room.create!(
       title: params[:title],
       description: params[:description],
       price_per_night: params[:price_per_night].to_f,
+      availability: dates,
       user_id: session[:current_user].id
     )
-    @rooms = Room.all
+
+    session[:edit_room] = Room.last
+    @availability = session[:edit_room].availability
+    erb :edit_listing
+  end
+
+  post '/listings' do
+    Room.update_availability(session[:edit_room].id, params)
+    @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
 
@@ -91,6 +110,12 @@ class Mkbnb < Sinatra::Base
   get '/requests' do
     erb :requests
   end
+
+  # get '/edit_listing' do
+  #   @availability = string_to_array(Room.last.availability)
+  #   erb :edit_listing
+  # end
+
 
   run! if app_file == $0
 
