@@ -10,20 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_132549) do
+ActiveRecord::Schema.define(version: 2021_08_26_101146) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.string "booking_status", limit: 20, null: false
+    t.date "date_from"
+    t.date "date_to"
     t.index ["room_id"], name: "index_requests_on_room_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
-
-  create_table "available_dates", force: :cascade do |t|
-    t.date "start_date", null: false
-    t.date "end_date"
-    t.integer "rooms_id", null: false
-    t.index ["rooms_id"], name: "index_available_dates_on_rooms_id"
   end
 
   create_table "rooms", force: :cascade do |t|

@@ -26,7 +26,7 @@
           posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %>
         </form>
         <form action="/book" method="post"><br>
-          <input type="hidden" name="room" value="<%=room%>">
+          <input type="hidden" name="room_id" value="<%=room.id%>">
           <input type="submit" value="Book It!"><br>
           <br><hr>
         </form>

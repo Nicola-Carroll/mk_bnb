@@ -2,6 +2,7 @@ require './config/environment'
 require './models/user'
 require './models/rooms'
 require './models/availability'
+require './models/request'
 require_relative 'helper_methods'
 
 require 'date'
@@ -98,17 +99,33 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/book' do
-    session[:room] = params[:room]
+    session[:room_id] = params[:room_id]
     redirect '/room'
   end
 
   get '/room' do
-    @room = session[:room]
+    @room = Room.find_by(id: session[:room_id])
     erb :room
   end
 
   get '/requests' do
     erb :requests
+  end
+
+  post '/make_request' do
+    session[:current_request_id] = Request.create!(
+      user_id: session[:current_user].id, 
+      room_id: session[:room_id], 
+      booking_status: "pending",
+      date_from: params[:date_from], 
+      date_to: params[:date_to]
+      ).id
+      redirect '/request_confirmation'
+  end
+
+  get "/request_confirmation" do
+    @current_request = Request.find_by(id: session[:current_request_id])
+    erb :request_confirmation
   end
 
   # get '/edit_listing' do
