@@ -128,6 +128,7 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/request_response' do
+    p params
     BookingRequest.process_request_reponse(params)
     erb :requests
   end

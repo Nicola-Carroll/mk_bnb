@@ -15,13 +15,13 @@ class BookingRequest < ActiveRecord::Base
     private
     
     def update_status(id, response)
-      request = self.find_by(id: id.to_i)
+      request = self.find_by(id: id)
       request.booking_status = REQUEST_STATUSES[response]
       request.save
     end
     
     def request_ids_from(params)
-      params.map { |key, value| key if REQUEST_RESPONSES.include?(value) }
+      params.map { |request_id, response| request_id if REQUEST_RESPONSES.include?(response) }
     end
 
     def dates_array_from(params)
@@ -52,10 +52,12 @@ class BookingRequest < ActiveRecord::Base
     def update_availability(params)
       request_ids = request_ids_from(params)
       request_ids.each do |id|
-        Room.update_availability(
-          room_id_from_request(id),
-          dates_array_from(params)
-        )
+        if params[id] == "Approve"
+          Room.update_availability(
+            room_id_from_request(id),
+            dates_array_from(params)
+          )
+        end
       end
     end
   
