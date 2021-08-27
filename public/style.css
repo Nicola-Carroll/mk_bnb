@@ -19,7 +19,6 @@ h1 {
   height: 4vh;
 }
 
-
 h2, h3, h4 {
   text-align: center;
   font-style: normal;
@@ -29,33 +28,39 @@ h2, h3, h4 {
 
 #box {
   width: 75%;
-  margin: 10% auto;
+  margin: 0% auto;
   height: 100vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
 }
 
 #room_box {
   width: 75%;
-  margin: 10% auto;
+  margin: 0% auto;
   height: 125vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
 }
 
 #box_explore {
   width: 75%;
-  margin: 10% auto;
-  /* display: flex; */
+  margin: 0% auto;
   height: 350vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
+}
+
+#rooms_margin { 
+  margin: 0; 
+  padding: 0;
+  border: 1px solid transparent;
 }
 
 textarea {
   border-radius: 8px;
-  /* height: 5vh; */
-  /* width: 80px; */
   font-family: aileron, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -65,8 +70,6 @@ textarea {
 
 input {
   border-radius: 8px;
-  /* height: 5vh; */
-  /* width: 175px; */
   font-family: aileron, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -118,6 +121,7 @@ hr {
   height: 150px;
   display: block;
   margin: auto;
+  display: block;
 }
 
 form hr {
