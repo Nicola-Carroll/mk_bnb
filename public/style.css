@@ -32,6 +32,7 @@ h2, h3, h4 {
   height: 100vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
 }
 
 #room_box {
@@ -40,6 +41,7 @@ h2, h3, h4 {
   height: 125vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
 }
 
 #box_explore {
@@ -48,6 +50,13 @@ h2, h3, h4 {
   height: 350vh;
   background-color: rgb(0, 51, 102, 0.6);
   border-radius: 40px;
+  overflow: scroll;
+}
+
+#rooms_margin { 
+  margin: 0; 
+  padding: 0;
+  border: 1px solid transparent;
 }
 
 textarea {
