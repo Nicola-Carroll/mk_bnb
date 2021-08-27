@@ -12,18 +12,20 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>You are viewing <%=@room.title%><br>
-      <%=@room.description%><br>
-      <%=@room.price_per_night%>
-      </h2>
-      <div>
-        Select your check out date, or go back to adjust your check in <br>
-        <form action="/select_checkout" method="post">
-        Check-out: <input type='date' name='date_to' 
-        value="<%= @current_check_in %>" min="<%= @current_check_in %>" max="<%= @max_check_out %>" required><br>
-          <input type="submit" name="make_request" value="Make Request!">
-        </form>
-      </div>
+      <br><h2>You are viewing <%=@room.title%></h2><br>
+      <hr id=pic_hr>
+      <img src="<%= @room.picture_url %>" id='room_url_cinema'>
+      <hr id=pic_hr>
+      <h4><%=@room.description%></h4>
+      <h4>Available for £<%= '%.2f' % @room.price_per_night %> per night</h4><br>
+      <hr id=pic_hr>
+      <form action="/select_checkout" method="post">
+        <h3>Select your check out date, or go back to adjust your check in<h/3><br>
+        <a>Check-out date:</a> 
+        <input type='date' name='date_to' value="<%= @current_check_in %>" 
+                min="<%= @current_check_in %>" max="<%= @max_check_out %>" required><br>
+        <br><button type="submit" id='big_button' name="make_request" style>Make Request!</button><br>
+      </form>
     </section>
   </body>
 </html>

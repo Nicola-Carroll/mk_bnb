@@ -95,6 +95,11 @@ class Mkbnb < Sinatra::Base
       unavailable_dates(params)
     )
     @rooms = Room.where(user_id: session[:current_user].id).all
+    redirect '/listings'
+  end
+
+  get '/listings' do
+    @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
 
