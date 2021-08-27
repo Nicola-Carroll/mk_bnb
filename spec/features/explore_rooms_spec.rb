@@ -17,7 +17,7 @@ feature 'checks the explore rooms page' do
     fill_in("price_per_night", with: 50)
     fill_in("availability_range_min", with: "2021-09-11")
     fill_in("availability_range_max", with: "2021-09-13")
-    click_button("submit")
+    click_button("add_listing")
   end
 
   scenario 'adds a new room and checks it appears on the page' do
@@ -29,6 +29,9 @@ feature 'checks the explore rooms page' do
     visit "explore_rooms"
     click_button("Book It!")
     expect(page).to have_content "Castle"
+  end
+end
+
 feature 'exploring all rooms' do
   scenario 'loged in user can filter available rooms by date' do
     visit("/explore_rooms")

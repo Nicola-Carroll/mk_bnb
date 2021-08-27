@@ -6,6 +6,7 @@
   </head>
     <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
     <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/listings">My Listings</a>&nbsp;
     <a href="/requests">Requests</a>&nbsp;
     <a href="/logout">Log Out</a>
     <p></header>
@@ -28,7 +29,7 @@
                              value="<%= Date.today.strftime("%Y-%m-%d") %>"
                              min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
       </section>
-        <br><button type="submit" name="ladd_listing" style>Add listing!</button>
+        <br><button type="submit" name="add_listing" style>Add listing!</button>
       </form>
     </section>
   </body>
