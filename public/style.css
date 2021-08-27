@@ -141,5 +141,17 @@ button {
   border: 2px solid #ccd9ff;
 }
 
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 button:hover {opacity: 0.6}
 

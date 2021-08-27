@@ -6,12 +6,15 @@
   </head>
     <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
     <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/listings">My Listings</a>&nbsp;
     <a href="/requests">Requests</a>&nbsp;
     <a href="/logout">Log Out</a>
     <p></header>
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
+    <div class="row">
+      <div class="column">
       <h2>Requests you have made:</h2>
       <% BookingRequest.where(user_id: session[:current_user].id).reverse.each do |request| %>
         <li><%=Room.find_by(id: request.room_id).title %><br>
@@ -19,6 +22,8 @@
         <%=request.booking_status%>
         </li>
         <%end%>
+        </div>
+        <div class="column">
       <h2>Requests you have received:</h2>
       <% Room.where(user_id: session[:current_user].id).each do |room| %>
         <% BookingRequest.where(room_id: room.id).reverse.each do |request| %>
@@ -32,6 +37,8 @@
             <input type="submit" value="Decline" name="<%=request.id%>">
             </form>
           <%end%>
+          </div>
+          </div>
           <hr>
           </li>
         <%end%>

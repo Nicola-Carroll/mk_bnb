@@ -4,6 +4,12 @@
       <title>MakersBnB</title>
       <link rel="stylesheet" type="text/css" href="style.css">
     </head>
+    <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
+    <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/listings">My Listings</a>&nbsp;
+    <a href="/requests">Requests</a>&nbsp;
+    <a href="/logout">Log Out</a>
+    <p></header>
     <body>
       <section id='box'>
         <form action='/listings' method='post'>
