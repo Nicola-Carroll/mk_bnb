@@ -1,5 +1,6 @@
 require './models/rooms'
 require './models/user'
+require './models/request'
 require 'capybara'
 require 'capybara/rspec'
 require 'simplecov'
@@ -50,6 +51,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    BookingRequest.delete_all
     Room.delete_all
     User.delete_all
   end
