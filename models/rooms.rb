@@ -25,6 +25,10 @@ class Room < ActiveRecord::Base
 
     end
 
+    def date_available(check_in,id)
+      self.find_by(id: id).availability.include?(check_in)
+    end
+
   end
 
   extend ClassMethods
@@ -47,8 +51,12 @@ class Room < ActiveRecord::Base
 
   def self.max_date_from_min(id, check_in_as_string)
     check_in = string_to_date(check_in_as_string)
-    max_check_out = availability_as_date_ranges(id).select { |range| range.include? check_in }.max.max
-    max_check_out.strftime("%Y-%m-%d")
+    if !date_available(check_in_as_string, id)
+      check_in
+    else
+      max_check_out = availability_as_date_ranges(id).select { |range| range.include? check_in }.max.max
+      max_check_out.strftime("%Y-%m-%d")
+    end
   end
 
 
