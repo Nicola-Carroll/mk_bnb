@@ -90,7 +90,10 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/listings' do
-    Room.update_availability(session[:edit_room_id], params)
+    Room.update_availability(
+      session[:edit_room_id],
+      unavailable_dates(params)
+    )
     @rooms = Room.where(user_id: session[:current_user].id).all
     erb :listings
   end
@@ -119,6 +122,8 @@ class Mkbnb < Sinatra::Base
   end
 
   get '/room' do
+    @max_date = Room.max_available_date(session[:room_id])
+    @min_date = Room.min_available_date(session[:room_id])
     @room = Room.find_by(id: session[:room_id])
     erb :room
   end
@@ -128,20 +133,47 @@ class Mkbnb < Sinatra::Base
   end
 
   post '/make_request' do
+    session[:max_checkout] = Room.max_date_from_min(
+      session[:room_id],
+      params[:date_from]
+    )
+    session[:date_from] = params[:date_from]
+    redirect '/select_checkout'
+  end
+
+  get '/select_checkout' do
+    @room = Room.find_by(id: session[:room_id])
+    @current_check_in = session[:date_from]
+    @max_check_out = session[:max_checkout]
+    erb :checkout
+  end
+
+  post '/select_checkout' do
     session[:current_request_id] = BookingRequest.create!(
       user_id: session[:current_user].id, 
       room_id: session[:room_id], 
       booking_status: "pending",
-      date_from: params[:date_from], 
+      date_from: session[:date_from], 
       date_to: params[:date_to]
       ).id
+    if BookingRequest.is_valid(session[:current_request_id]) 
       redirect '/request_confirmation'
+    else
+      BookingRequest.auto_decline(session[:current_request_id])
+      redirect "/auto_decline"
+    end
   end
 
   get "/request_confirmation" do
     @current_request = BookingRequest.find_by(id: session[:current_request_id])
     erb :request_confirmation
   end
+
+  get "/auto_decline" do
+    @current_request = BookingRequest.find_by(id: session[:current_request_id])
+    erb :auto_decline
+  end
+
 
   post '/request_response' do
     p params

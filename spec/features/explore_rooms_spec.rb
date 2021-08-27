@@ -30,11 +30,13 @@ feature 'checks the explore rooms page' do
     click_button("Book It!")
     expect(page).to have_content "Castle"
   end
+
+  feature 'exploring all rooms' do
+    scenario 'loged in user can filter available rooms by date' do
+      visit("/explore_rooms")
+      expect(page).to have_content('Filter out available rooms by date')
+    end
+  end
+  
 end
 
-feature 'exploring all rooms' do
-  scenario 'loged in user can filter available rooms by date' do
-    visit("/explore_rooms")
-    expect(page).to have_content('Filter out available rooms by date')
-  end
-end

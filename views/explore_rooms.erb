@@ -35,7 +35,7 @@
           <hr id='explorer'>
           <form>
           <%# <form action="/book" method="post"> %>
-            <% Room.all.reverse.each do |room| %>
+            <% Room.all.select { |room| room.availability.count > 1 }.reverse.each do |room| %>
             <h2><%= room.title %></h2><br>
             <img src="<%= room.picture_url %>" id='room_url'>
             <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
