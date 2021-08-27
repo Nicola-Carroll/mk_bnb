@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+    <header><p style="text-align:right;">Logged in as <%="#{@signed_in_user.user_name}" %>&nbsp;
+    <a href="/explore_rooms">Explore Rooms</a>&nbsp;
+    <a href="/listings">My Listings</a>&nbsp;
+    <a href="/requests">Requests</a>&nbsp;
+    <a href="/logout">Log Out</a>
+    <p></header>
+    <body>
+      <section id=‘box’>
+      <h1>Your listings</h1>
+      <form action="/create_listing" method="GET">
+            <button type="submit" name="add_listing" id='big_button' style>Create another listing!</button><br>
+          </form><br>
+          <h1>See all your listings <a href="/listings">here</a>&nbsp;<h1>
+    </section>
+  </body>
+</html>

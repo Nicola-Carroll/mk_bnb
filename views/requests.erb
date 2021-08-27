@@ -19,7 +19,7 @@
       <% BookingRequest.where(user_id: session[:current_user].id).reverse.each do |request| %>
         <li><%=Room.find_by(id: request.room_id).title %><br>
         <%=request.date_from %> to <%=request.date_to %> <br>
-        <%=request.booking_status%>
+        <%=request.booking_status.capitalize%>
         </li>
         <%end%>
         </div>
@@ -29,7 +29,7 @@
         <% BookingRequest.where(room_id: room.id).reverse.each do |request| %>
           <li><%=room.title%><br>
           <%=request.date_from %> to <%=request.date_to %> <br>
-          <%=request.booking_status%><br>
+          <%=request.booking_status.capitalize%><br>
           Made by: <%=User.find_by(id: request.user_id).user_name%>
           <%if request.booking_status=="pending"%>
             <form action="/request_response" method="post"><br>
