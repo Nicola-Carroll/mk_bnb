@@ -12,8 +12,7 @@
     <p></header>
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
-    <section id='room_box'>
-
+    <section id='box'>
         <br><h2>You are viewing <%=@room.title%></h2><br>
         <hr id=pic_hr>
         <img src="<%= @room.picture_url %>" id='room_url_cinema'>
@@ -21,15 +20,14 @@
         <h4><%=@room.description%></h4>
         <h4>Available for £<%= '%.2f' % @room.price_per_night %> per night</h4><br>
         <hr id=pic_hr>
-    <section id='box'>
-      <div>
-        You must select at least one night or your request will be rejected <br>
         <form action="/make_request" method="post">
-          <h3>Choose your check-in dates for <%=@room.title%> below and make a booking request!</h3><br>
-          <a>Check-in date: <input type='date' name='date_from' 
-        value="<%= @min_date %>" min="<%= @min_date%>" max="<%= @max_date %>" required><br>
-          <br><button type="submit" id='big_button' name="make_request" style>Select your checkout date</button>
-        </form>
+          <h3>You must select at least one night or your request will be rejected. Choose</h3>
+          <h3>your check-in dates for <%=@room.title%> below and make a booking request!</h3><br>
+          <a>Check-in date:<a>
+           <input type='date' name='date_from' value="<%= @min_date %>" 
+                  min="<%= @min_date%>" max="<%= @max_date %>" required><br>
+          <br><button type="submit" id='big_button' name="make_request" style>Select your checkout date</button><br>
+        </form><br>
       
     </section>
   </body>
