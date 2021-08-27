@@ -13,7 +13,7 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='room_box'>
-      <form>
+
         <br><h2>You are viewing <%=@room.title%></h2><br>
         <hr id=pic_hr>
         <img src="<%= @room.picture_url %>" id='room_url_cinema'>
@@ -30,7 +30,7 @@
         value="<%= @min_date %>" min="<%= @min_date%>" max="<%= @max_date %>" required><br>
           <br><button type="submit" id='big_button' name="make_request" style>Select your checkout date</button>
         </form>
-      </form>
+      
     </section>
   </body>
 </html>

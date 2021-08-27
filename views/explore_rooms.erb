@@ -49,25 +49,6 @@
           <% end %>
         </section>
       <form>
-    <section id='box'>
-      <section id='explore_rooms'>
-        <br><h2>Welcome back <%="#{@signed_in_user.first_name}" %>!</h2>
-        <form action="/create_listing" method="GET">
-          <input type="submit" name="add_listing" value="Add new listing!">
-        </form><br>
-        <hr>
-        <form id='date_filter' action="/explore_filtered_rooms" method="post">
-          <h3>Filter out available rooms by date</h3>
-          Check in: <input type='date' name='check_in_start' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required>
-          Check out: <input type='date' name='check_out_end' 
-                               value="<%= Date.today.strftime("%Y-%m-%d") %>"
-                               min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
-          <br><input type="submit" name="filter_rooms" value="Filter rooms"><br>
-        <br></form>
-        <hr>
-      </section>
     </section>
   </body>
 </html>
