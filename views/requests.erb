@@ -12,37 +12,38 @@
     <p></header>
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
-    <section id='box'>
+    <section id='box_explore'>
     <div class="row">
+      <%# <div style="border-right:1px solid #000;height:500px"></div> %>
+      <div class="column" >
+        <h2>Requests you have made:</h2><br>
+        <% BookingRequest.where(user_id: session[:current_user].id).reverse.each do |request| %>
+          <h3><%=Room.find_by(id: request.room_id).title %></h3>
+          <img src="<%= Room.find_by(id: request.room_id).picture_url %>" id='explore_url'>
+          <h4><%= PrintDate.selected_date(request.date_from) %> to <%= PrintDate.selected_date(request.date_to)%></h4>
+          <h4><%=request.booking_status.capitalize%><h4>
+          <hr id='req_hr'>
+        <%end%>
+      </div>
       <div class="column">
-      <h2>Requests you have made:</h2>
-      <% BookingRequest.where(user_id: session[:current_user].id).reverse.each do |request| %>
-        <li><%=Room.find_by(id: request.room_id).title %><br>
-        <%=request.date_from %> to <%=request.date_to %> <br>
-        <%=request.booking_status.capitalize%>
-        </li>
-        <%end%>
-        </div>
-        <div class="column">
-      <h2>Requests you have received:</h2>
-      <% Room.where(user_id: session[:current_user].id).each do |room| %>
-        <% BookingRequest.where(room_id: room.id).reverse.each do |request| %>
-          <li><%=room.title%><br>
-          <%=request.date_from %> to <%=request.date_to %> <br>
-          <%=request.booking_status.capitalize%><br>
-          Made by: <%=User.find_by(id: request.user_id).user_name%>
-          <%if request.booking_status=="pending"%>
-            <form action="/request_response" method="post"><br>
-            <input type="submit" value="Approve" name="<%=request.id%>">
-            <input type="submit" value="Decline" name="<%=request.id%>">
-            </form>
+        <h2>Requests you have received:</h2><br>
+        <% Room.where(user_id: session[:current_user].id).each do |room| %>
+          <% BookingRequest.where(room_id: room.id).reverse.each do |request| %>
+            <h3><%=room.title%></h3>
+            <img src="<%= room.picture_url %>" id='explore_url'>
+            <h4><%= PrintDate.selected_date(request.date_from) %> to <%= PrintDate.selected_date(request.date_to)%></h4>
+            <h4>Made by:<a><%=User.find_by(id: request.user_id).user_name%></h4>
+            <h4><%=request.booking_status.capitalize%></h4>
+            <%if request.booking_status=="pending"%>
+              <form action="/request_response" method="post">
+                <input type="submit" value="Approve" name="<%=request.id%>">
+                <input type="submit" value="Decline" name="<%=request.id%>">
+              </form>
+            <%end%><hr id='req_hr'>
           <%end%>
-          </div>
-          </div>
-          <hr>
-          </li>
         <%end%>
-      <%end%>
+      </div>
+    </div>
     </section>
   </body>
 </html>

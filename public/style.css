@@ -93,6 +93,13 @@ input {
   border: 2px solid #ccd9ff;
 }
 
+#explore_url {
+  height: 70px;
+  display: block;
+  margin: auto;
+}
+
+
 hr {
   width: 98%;
   border: 1px solid #cceeff;
@@ -112,6 +119,16 @@ hr {
 form hr {
   width: 30%;
   border: 1px solid #cceeff;
+}
+
+#req_hr {
+  width: 48%;
+  border: 1px solid #cceeff;
+}
+
+#border2 {
+  width: 30%;
+  border-left: 4px solid #cceeff;
 }
 
 #explorer {
@@ -141,10 +158,11 @@ button {
   border: 2px solid #ccd9ff;
 }
 
+button:hover {opacity: 0.6}
+
 .column {
   float: left;
   width: 50%;
-  padding: 10px;
 }
 
 .row:after {
@@ -152,6 +170,4 @@ button {
   display: table;
   clear: both;
 }
-
-button:hover {opacity: 0.6}
 
