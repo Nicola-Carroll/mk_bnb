@@ -26,13 +26,11 @@
                min="<%= Date.today.strftime("%Y-%m-%d")%>" required><br>
         <br><button type="submit" name="filter_rooms" style>Filter rooms</button><br>
       </form><br>
+      </section>
       <hr>
-      <form action="/create_listing" method="GET">
-        <br><button type="submit" name="add_listing" id='big_button' style>Add new listing!</button><br>
-      </form><br>
       <br><h2>Showing rooms available from <%= PrintDate.selected_date(@filtered_dates.first) %> to <%= PrintDate.selected_date(@filtered_dates.last)%></h2>
       <br><hr>
-      <section>
+      <section id='rooms'>
         <% hit_counter = 0 %>
         <% Room.all.each do |room| %>
           <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
@@ -52,7 +50,7 @@
           <h2>Sorry no rooms available on those dates!</h2>
         <% end %>
       </section>
-      </section>
+      <%# </section> %>
     </section>
   </body>
 </html>

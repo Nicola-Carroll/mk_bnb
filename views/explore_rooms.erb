@@ -13,12 +13,9 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box_explore'>
-      <form>
+      <%# <form> %>
         <section>
           <br><h2>Welcome back <%= @signed_in_user.first_name.capitalize %>!</h2><br>
-          <form action="/create_listing" method="GET">
-            <button type="submit" name="add_listing" id='big_button' style>Add new listing!</button><br>
-          </form><br>
           <hr id='explorer'>
           <form id='date_filter' action="/explore_filtered_rooms" method="post">
             <h3>Filter out available rooms by date</h3><br>
@@ -33,14 +30,11 @@
             <br><button type="submit" name="filter_rooms" style>Filter rooms</button><br>
           </form><br>
           <hr id='explorer'>
-          <form>
-          <%# <form action="/book" method="post"> %>
-            <% Room.all.select { |room| room.availability.count > 1 }.reverse.each do |room| %>
-            <h2><%= room.title %></h2><br>
-            <img src="<%= room.picture_url %>" id='room_url'>
-            <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
-            <h4>posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %></h4>
-          </form>
+          <% Room.all.select { |room| room.availability.count > 1 }.reverse.each do |room| %>
+          <h2><%= room.title %></h2><br>
+          <img src="<%= room.picture_url %>" id='room_url'>
+          <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
+          <h4>posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %></h4>
           <form action="/book" method="post">
             <input type="hidden" name="room_id" value="<%=room.id%>">
             <input type="submit" value="Book It!"><br>
@@ -48,7 +42,7 @@
           </form>
           <% end %>
         </section>
-      <form>
+      <%# <form> %>
     </section>
   </body>
 </html>

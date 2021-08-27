@@ -12,16 +12,15 @@
   <body>
     <img src='images/makers_logo.jpg' id='logo'>
     <section id='box'>
-      <br><h2>Unfortunately your booking request for <%=Room.find_by(id: "#{@current_request.room_id}").title %> 
-      from <%= @current_request.date_from %> to <%= @current_request.date_to %>
-      has been automatically declined as it is no longer available for your chosen dates.<br>
-
-
-
-      Please go back and select new dates.<br>
-      </h2>
-      <div>
-      </div>
+      <form action="/room" method="GET">
+        <br><hr><img src="<%= Room.find_by(id: "#{@current_request.room_id}").picture_url %>" id='room_url'><hr>
+        <br><h3>Unfortunately your booking request for <%=Room.find_by(id: "#{@current_request.room_id}").title %></h3>
+        <h3>From <%= PrintDate.selected_date(@current_request.date_from) %> to 
+            <%= PrintDate.selected_date(@current_request.date_to) %> has been automatically</h3>
+        <h3>declined, the as selected dates are no longer available.</h3><br>
+        <h4>Please select different dates to book <%=Room.find_by(id: "#{@current_request.room_id}").title %></h4><br>
+        <button type="submit" name="date_choose" id='big_button' style>Choose other dates</button><br>
+      </form>
     </section>
   </body>
 </html>
