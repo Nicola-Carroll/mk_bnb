@@ -94,6 +94,10 @@ class Mkbnb < Sinatra::Base
       session[:edit_room_id],
       unavailable_dates(params)
     )
+    redirect '/listings'
+  end
+
+  get '/listings' do
     @rooms = Room.where(user_id: session[:current_user].id).all
     redirect '/listings'
   end

@@ -28,7 +28,7 @@
       </form><br>
       </section>
       <hr>
-      <br><h2>Showing rooms available from <%= PrintDate.selected_date(@filtered_dates.first) %> to <%= PrintDate.selected_date(@filtered_dates.last)%></h2>
+      <br><h2>Showing rooms available from <%= PrintDate.selected_string(@filtered_dates.first) %> to <%= PrintDate.selected_string(@filtered_dates.last)%></h2>
       <br><hr>
       <section id='rooms'>
         <% hit_counter = 0 %>
