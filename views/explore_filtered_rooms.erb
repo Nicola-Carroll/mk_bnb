@@ -33,18 +33,18 @@
       <section id='rooms_margin'>
         <% hit_counter = 0 %>
           <% Room.all.each do |room| %>
-          <h2><% if ((room.availability & @filtered_dates ).any?) == true %></h2>
-            <% hit_counter += 1 %>
-            <h2><%= room.title %></h2><br>
-            <img src="<%= room.picture_url %>" id='room_url'>
-            <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
-            <h4>posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %></h4>
-            <form action="/book" method="post"><br>
-              <input type="hidden" name="room_id" value="<%=room.id%>">
-              <input type="submit" value="Book It!"><br>
-              <br><hr>
-            </form>
-          <% end %>
+            <% if ((room.availability & @filtered_dates ).any?) == true %>
+              <% hit_counter += 1 %>
+              <h2><%= room.title %></h2><br>
+              <img src="<%= room.picture_url %>" id='room_url'>
+              <h4>Available for £<%= '%.2f' % room.price_per_night %> per night</h4>
+              <h4>posted by <% @name = User.find_by(id: "#{room.user_id}") %><%= @name.user_name %></h4>
+              <form action="/book" method="post">
+                <input type="hidden" name="room_id" value="<%=room.id%>">
+                <input type="submit" value="Book It!"><br>
+                <br><hr>
+              </form>
+            <% end %>
           <% end %>
           <% if hit_counter == 0 %>
             <h2>Sorry no rooms available on those dates!</h2>

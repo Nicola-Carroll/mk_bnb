@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_08_27_123024) do
 
-  create_table "available_dates", force: :cascade do |t|
-    t.date "start_date", null: false
-    t.date "end_date"
-    t.integer "rooms_id", null: false
-    t.index ["rooms_id"], name: "index_available_dates_on_rooms_id"
-  end
-
   create_table "requests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
